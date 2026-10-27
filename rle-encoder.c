@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            printf("Use Valid Arguments compress | decompress")
+            printf("Use Valid Arguments compress | decompress");
         }      
     
     }    
@@ -26,8 +26,5 @@ int main(int argc, char *argv[])
         printf("Please use an argument of compress | decompress");
         return(1);
     }
-
-
-
 
 }
