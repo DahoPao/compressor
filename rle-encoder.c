@@ -2,17 +2,24 @@
 #include <string.h>
 
 
-void compress()
+void compress(char *filename)
 {
-    int next_char = getchar();
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL)
+        {
+          printf("Error: Could not open file %s\n", filename);
+            return;
+        }
+
+    int next_char = fgetc(file);
     int seen_char = next_char;
     int counter = 1;
 
-    while ((next_char = getchar()) != EOF)
-    {   
+    while ((next_char = fgetc(file)) != EOF)
+    {
         if (seen_char == next_char)
         {
-        counter++;        
+        counter++;
         }
         else
         {
@@ -24,10 +31,11 @@ void compress()
 
     printf("\n%c%d", seen_char, counter);
 
+    fclose(file);
 
 }
 
-void decompress()
+void decompress(char *filename)
 {
     int next_char = getchar();
     int seen_char = next_char;
@@ -38,23 +46,23 @@ void decompress()
 int main(int argc, char *argv[])
 {
 //If there is 1 or more arguments (words)
-    if (argc >= 2)
+    if (argc == 3)
     {
         if (strcmp(argv[1], "compress") == 0)
         {
-            compress();
+            compress(argv[2]);
         }
 
         else if (strcmp(argv[1], "decompress") == 0)
         {
-            decompress();
+            decompress(argv[2]);
         }
         else
         {
             printf("Use Valid Arguments compress | decompress");
-        }      
-    
-    }    
+        }
+
+    }
     else
     {
         printf("Please use an argument of compress | decompress");
