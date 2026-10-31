@@ -37,9 +37,9 @@ void compress(char *filename)
 
 void decompress(char *filename)
 {
-    int next_char = getchar();
-    int seen_char = next_char;
-    printf("Entering Decompress");
+    int c = fgetc(file);
+    int count = fgetc(file);
+    
 }
 
 
